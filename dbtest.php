@@ -7,49 +7,57 @@ if(!$link){
 
 echo '<p>access successed!</p>';
 
-$db_selected=mysql_select_db('d_kokutest',$link);
-if(!$db_selected){
-   die('database select failed!'.mysql_error());
-}
+# connect to database
 
-echo'<p>d_kokutest database seleted</p>';
+  $db_selected=mysql_select_db('d_kokutest',$link);
+  if(!$db_selected){
+     die('database select failed!'.mysql_error());
+  }
+  echo'<p>d_kokutest database seleted</p>';
 
 mysql_set_charset('utf8');
 
-$result=mysql_query('SELECT * FROM t_products');
-if(!$result){
-   die('table select failed!'.mysql_error());
+# query from table
+
+  $result=mysql_query('SELECT * FROM t_products');
+  if(!$result){
+     die('table select failed!'.mysql_error());
+  }
+# get the database data as array
+
+  while($row=mysql_fetch_assoc($result)){
+     echo'<p>';
+     echo'id='.$row['p_id'];
+     echo',name='.$row['p_name'];
+     echo',seller='.$row['p_seller'];
+     echo'</p>';
+  }
+
+# insert into table
+
+  $result_flag=mysql_query("INSERT INTO t_products(p_name,p_seller,p_price)VALUES('printer','sellerB',88)");
+
+  if(!$result_flag){
+     die('INSERT query failed!'.mysql_error());
+  }
+
+# get database data as arrary
+
+  $result=mysql_query('SELECT * FROM t_products');
+
+  while($row=mysql_fetch_assoc($result)){
+     echo'<p>';
+     echo'id='.$row['p_id'];
+     echo',name='.$row['p_name'];
+     echo',seller='.$row['p_seller'];
+     echo'</p>';
 }
 
-while($row=mysql_fetch_assoc($result)){
-   echo'<p>';
-   echo'id='.$row['p_id'];
-   echo',name='.$row['p_name'];
-   echo',seller='.$row['p_seller'];
-   echo'</p>';
-}
+# close database
 
-$sql="INSERT INTO t_products(p_id,p_name,p_seller,p_price)VALUES(2,'printer','sellerB',88)";
-$result_flag=mysql_query($sql);
+  $close_flag=mysql_close($link);
 
-if(!$result_flag){
-   die('INSERT query failed!'.mysql_error());
-}
-
-$result=mysql_query('SELECT * FROM t_products');
-
-while($row=mysql_fetch_assoc($result)){
-   echo'<p>';
-   echo'id='.$row['p_id'];
-   echo',name='.$row['p_name'];
-   echo',seller='.$row['p_seller'];
-   echo'</p>';
-}
-
-
-$close_flag=mysql_close($link);
-
-if($close_flag){
-   echo'<p> unaccess successed!</p>';
-}
+  if($close_flag){
+     echo'<p> unaccess successed!</p>';
+  }
 ?>
