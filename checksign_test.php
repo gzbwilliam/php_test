@@ -8,6 +8,8 @@
 <?php
   session_start();
 
+  //signin sessionがない場合はsignin pageに戻る
+
   if(!isset($_SESSION['join'])){
      header('Location:signin_test.php');
      exit();
@@ -30,6 +32,8 @@
       【表示されません】
     </dd>
   </dl>
+
+  <!-- &laqueは”<<”,&nbspは空白 -->
   <div><a href="signin_test.php?action=rewrite">&laquo;&nbsp;書き直す</a>
   <input type="submit" value="登録する"></div>
   </form>
