@@ -1,18 +1,21 @@
 Test files :
-   
-    dbtest.php           //get database data as array
-    sessiontest3_2.php      //sessionID表示、session削除
-    inquiry.html         //ページからページまでのData送り
-    check_dbinq_test.php     //check DatabaseまでのInquiry
-    sessiontest3_3.php     //check session destroyed.
-    check_inquiry.php      //checkページまで送ったData
+    
     phptest.php             //phpinfo()
+
+    dbtest.php           //get database data as array
+    dblinktest.php         //check database linked
+    db_inq_test.html        //DatabaseまでのData送り
+    check_dbinq_test.php     //check DatabaseまでのInquiry
+    inquiry.html         //ページからページまでのData送り
+    check_inquiry.php      //checkページまで送ったData
+
     sessiontest1.php      //sessionあるかどうかcheck,sessionID表示
     sessiontest3_1.php      //訪問回数、前回訪問日時表示
+    sessiontest3_2.php      //sessionID表示、session削除
+    sessiontest3_3.php     //check session destroyed.
+
     upload.html             //画像uploadページ
     upload_image.php       //uploadした画像処理、表示
-    db_inq_test.html        //DatabaseまでのData送り
-    dblinktest.php         //check database linked
 
 
 Net shop Website:
